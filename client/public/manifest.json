@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Ion Video Score",
+    "version": "1.0",
+    "description": "A Chrome extension to calculate the score of a youtube video and get the comments",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "image.png",
+        "48": "image.png",
+        "128": "image.png"
+      }
+    },
+    "permissions": ["storage", "tabs", "activeTab", "scripting"],
+    "host_permissions": ["http://localhost:3000/*"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["*://www.youtube.com/*", "*://youtu.be/*", "https://www.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
